@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# The scripts parses apache log files groups them according to no. of occurences
+awk '{
+	print $1, $9
+}' apache-access.log | uniq -c | sort -nr
