@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-#puts ARGV[0].scan(/(School)/).join
+# Prints the word School if it is in the string
+puts ARGV[0].scan(/(School)/).join
