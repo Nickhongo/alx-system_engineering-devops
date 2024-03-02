@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-#puts ARGV[0].scan(/hbt{2,5}n/).join
+#Prints all the words that start with h, end with n, and have between 2 and 5
+puts ARGV[0].scan(/hbt{2,5}n/).join
