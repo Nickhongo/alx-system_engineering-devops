@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 # This script installs and configures nginx in a new Ubuntu server
-sudo apt update
-sudo apt install nginx -y
-echo "Hello World!" | sudo tee -a /var/www/html/index.html
-sudo /etc/init.d/nginx restart
+sudo apt-get update
+
+sudo apt-get install -y nginx
+
+sudo tee /etc/nginx/sites-available/default > /dev/null <<EOF
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        echo "HTTP/1.1 200 OK";
+        echo "Content-Type: text/html";
+        echo "";
+        echo "<html><body>Hello World!</body></html>";
+    }
+}
+EOF
+sudo service nginx restart
