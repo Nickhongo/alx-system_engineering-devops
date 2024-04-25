@@ -1,14 +1,15 @@
 # This manifest changes to SSh client config
-file { '/home/your_username/.ssh/config':
-  ensure  => file,
-  owner   => 'your_username',
-  group   => 'your_group',
-  mode    => '0644',
-  content => "
-Host *
-    PasswordAuthentication no
+# This manifest makes changes to SSH client configuration file
+class my_ssh_config {
+    include ssh::client
 
-Host your_server_ip
-    IdentityFile ~/.ssh/school
-",
+    file_line { 'PasswordAuthentication':
+        path    => '/etc/ssh/ssh_config',
+        value   => 'no',
+    }
+
+    file_line { 'IdentityFile':
+        path    => '/etc/ssh/ssh_config',
+        value   => '~/.ssh/school'
+    }
 }
