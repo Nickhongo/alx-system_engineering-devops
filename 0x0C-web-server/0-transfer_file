@@ -11,7 +11,6 @@ username="$3"
 ssh_key="$4"
 
 scp -o StrictHostKeyChecking=no -i "$ssh_key" "$file_path" "$username@$server_ip":~
-
 if [ "$?" -eq 0 ]; then
     echo "File transferred successfully."
 else
